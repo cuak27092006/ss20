@@ -1,26 +1,25 @@
-let soLuongNguyenTo = +prompt("Nhập n số nguyên tố:");
+let soLuongNguyenTo = +prompt("Nhập số lượng số nguyên tố:");
 let chuoiKetQua = "";
 let soThuHienTai = 2;
-let soNguyenTo = "0";
+let dem = 0;
+
+function laSoNguyenTo(n) {
+  if (n < 2) return false;
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) return false;
+  }
+  return true;
+}
 
 if (soLuongNguyenTo > 0) {
-  for (let dem = 0; dem < soLuongNguyenTo; dem++) {
-    for (soThuHienTai; ; soThuHienTai++) {
-      let demUocSo = 0;
-      for (let uocSo = 2; uocSo < soThuHienTai; uocSo++) {
-        if (soThuHienTai % uocSo == 0) {
-          demUocSo++;
-        }
-      }
-      if (demUocSo == 0) {
-        soNguyenTo = soThuHienTai;
-        break;
-      }
+  while (dem < soLuongNguyenTo) {
+    if (laSoNguyenTo(soThuHienTai)) {
+      chuoiKetQua += soThuHienTai + " ";
+      dem++;
     }
-    soThuHienTai = soNguyenTo + 1;
-    chuoiKetQua = chuoiKetQua + " " + soNguyenTo;
+    soThuHienTai++;
   }
-  alert(chuoiKetQua);
+  alert(chuoiKetQua.trim());
 } else {
-  alert("n không hợp lệ");
+  alert("Số lượng không hợp lệ!");
 }
